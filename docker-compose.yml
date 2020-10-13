@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+    
+  web:
+    build:
+      context: ./web/.
+      dockerfile: Dockerfile
+    container_name: NLW#3-WEB
+    volumes:
+      - ./web/.:/app
+    ports: 
+      - 80:3000
+    links:
+      - app:app 
+    networks:
+      - network-public  
+
+networks:
+  network-private:
+    driver: bridge
+  network-public:
+    driver: bridge
